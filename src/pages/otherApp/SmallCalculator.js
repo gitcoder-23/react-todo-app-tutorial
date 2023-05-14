@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const SmallCalculator = () => {
   const [fnumber, setFnumber] = useState('');
   const [lnumber, setLnumber] = useState('');
   const [result, setResult] = useState('');
+  const textInput = useRef(null);
 
   const plusClick = () => {
     const resultValue = parseInt(fnumber) + parseInt(lnumber);
@@ -52,6 +53,10 @@ const SmallCalculator = () => {
     setResult('');
   };
 
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
   console.log('fnumber  & lnumber==>', fnumber, lnumber, result);
   return (
     <>
@@ -63,6 +68,8 @@ const SmallCalculator = () => {
             name="fnumber"
             id="fnumber"
             value={fnumber}
+            autoFocus
+            ref={textInput}
             style={{ fontSize: 20 }}
             onChange={(e) => setFnumber(e.target.value)}
           />{' '}
