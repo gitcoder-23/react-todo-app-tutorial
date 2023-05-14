@@ -6,6 +6,7 @@ import ViewTodo from './pages/todoApp/ViewTodo';
 import CreateTodo from './pages/todoApp/CreateTodo';
 import Counter from './pages/otherApp/Counter';
 import SmallCalculator from './pages/otherApp/SmallCalculator';
+import SmallCounterApp from './pages/miniAps/SmallCounterApp';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <div className="App">
         <h1>React All Apps Tutorial</h1>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/" element={<SmallCounterApp />} />
+          <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/calculator" element={<SmallCalculator />} />
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
