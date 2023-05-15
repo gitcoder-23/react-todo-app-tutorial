@@ -8,10 +8,7 @@ import Counter from './pages/otherApp/Counter';
 import SmallCalculator from './pages/otherApp/SmallCalculator';
 import SmallCounterApp from './pages/miniAps/SmallCounterApp';
 import SmallCounterByFourApp from './pages/myProjectTasks/SmallCounterByFourApp';
-<<<<<<< HEAD
-=======
 import SmallCalculatorApp from './pages/miniAps/SmallCalculatorApp';
->>>>>>> be525eee3367ce51bcf9af7628075fa941c5b085
 
 function App() {
   return (
