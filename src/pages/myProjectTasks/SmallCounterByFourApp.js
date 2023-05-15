@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 
 const SmallCounterByFourApp = () => {
   const [newNumber, setNewNumber] = useState(0);
-  const onAdd = () => {
-    let newVar = newNumber + 4;
-    setNewNumber(newVar);
-  };
+
   const onMinus = () => {
     let newVar = newNumber - 4;
     setNewNumber(newVar);
@@ -20,7 +17,13 @@ const SmallCounterByFourApp = () => {
       <h4 style={{ fontSize: 100 }}>
         <span>{newNumber}</span>
       </h4>
-      <button style={{ fontSize: 30 }} onClick={() => onAdd()}>
+      <button
+        style={{ fontSize: 30 }}
+        onClick={() => {
+          let newVar = newNumber + 4;
+          setNewNumber(newVar);
+        }}
+      >
         ADD
       </button>{' '}
       &nbsp;&nbsp;&nbsp;&nbsp;
