@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Menu from '../navigation/Menu';
 
 const SmallCalculator = () => {
   const [fnumber, setFnumber] = useState('');
@@ -61,6 +62,7 @@ const SmallCalculator = () => {
   return (
     <>
       <div className="container">
+        <Menu />
         <h2>Small Calculator</h2>
         <div style={{ marginBottom: 30 }}>
           <input

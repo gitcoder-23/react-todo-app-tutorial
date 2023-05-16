@@ -20,6 +20,7 @@ function App() {
           <Route exact path="/small-cal" element={<SmallCalculatorApp />} />
           <Route exact path="/small_count" element={<SmallCounterApp />} />
           <Route exact path="/calculator" element={<SmallCalculator />} />
+          ///
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
           <Route exact path="/create" element={<CreateTodo />} />

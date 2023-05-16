@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Menu from '../navigation/Menu';
 
 const SmallCounterApp = () => {
   // Hook
@@ -23,6 +24,7 @@ const SmallCounterApp = () => {
 
   return (
     <div>
+      <Menu />
       <h3>Small Counter App</h3>
       <h4 style={{ fontSize: 100 }}>
         <span>{number}</span>

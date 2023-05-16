@@ -15,6 +15,10 @@ const Menu = () => {
       <button>
         <Link to="/small_count">Small Counter App</Link>
       </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button>
+        <Link to="/calculator">Small Calculator</Link>
+      </button>
     </div>
   );
 };
