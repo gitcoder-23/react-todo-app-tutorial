@@ -16,9 +16,9 @@ function App() {
       <div className="App">
         <h1>React All Apps Tutorial dev</h1>
         <Routes>
-          <Route exact path="/" element={<SmallCalculatorApp />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/small-cal" element={<SmallCalculatorApp />} />
           <Route exact path="/small_count" element={<SmallCounterApp />} />
-          <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/calculator" element={<SmallCalculator />} />
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
