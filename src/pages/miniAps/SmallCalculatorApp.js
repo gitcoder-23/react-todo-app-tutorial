@@ -61,6 +61,16 @@ const SmallCalculatorApp = () => {
     }, 3000);
   };
 
+  const onChangeInput = (e) => {
+    setFnumber(e.target.value);
+  };
+
+  const onReset = () => {
+    setFnumber('');
+    setLnumber('');
+    setResult('');
+  };
+
   console.log('fnumber-lnumber-->', fnumber, lnumber);
 
   return (
@@ -72,16 +82,16 @@ const SmallCalculatorApp = () => {
             type="text"
             name="fnumber"
             id="fnumber"
-            style={{ fontSize: 30 , borderRadius : 15 }}
+            style={{ fontSize: 30, borderRadius: 15 }}
             value={fnumber}
-            onChange={(e) => setFnumber(e.target.value)}
+            onChange={onChangeInput}
           />{' '}
           &nbsp;&nbsp;&nbsp;&nbsp;
           <input
             type="text"
             name="lnumber"
             id="lnumber"
-            style={{ fontSize: 30 , borderRadius : 15 }}
+            style={{ fontSize: 30, borderRadius: 15 }}
             value={lnumber}
             onChange={(e) => setLnumber(e.target.value)}
           />{' '}
@@ -93,55 +103,87 @@ const SmallCalculatorApp = () => {
             id="lnumber"
             disabled
             value={result}
-            style={{ fontSize: 30 , borderRadius : 15 }}
+            style={{ fontSize: 30, borderRadius: 15 }}
           />{' '}
         </div>
         <div>
           <button
             type="button"
             onClick={() => onPlus()}
-            style={{ fontSize: 40, backgroundColor: 'orange', width: 50 , borderRadius : 15 }}
+            style={{
+              fontSize: 40,
+              backgroundColor: 'orange',
+              width: 50,
+              borderRadius: 15,
+            }}
           >
             +
           </button>
-          &nbsp;
-          &nbsp;
-          &nbsp;
+          &nbsp; &nbsp; &nbsp;
           <button
             type="button"
             onClick={() => onMinus()}
-            style={{ fontSize: 40, backgroundColor: 'green', width: 50 , borderRadius : 15 }}
+            style={{
+              fontSize: 40,
+              backgroundColor: 'green',
+              width: 50,
+              borderRadius: 15,
+            }}
           >
             -
-          </button>&nbsp;&nbsp;&nbsp;
+          </button>
+          &nbsp;&nbsp;&nbsp;
           <button
             type="button"
             onClick={() => onMultiply()}
-            style={{ fontSize: 40, backgroundColor: 'yellow', width: 50 , borderRadius : 15 }}
+            style={{
+              fontSize: 40,
+              backgroundColor: 'yellow',
+              width: 50,
+              borderRadius: 15,
+            }}
           >
             *
-          </button>&nbsp;&nbsp;&nbsp;
+          </button>
+          &nbsp;&nbsp;&nbsp;
           <button
             type="button"
             onClick={() => onDivision()}
-            style={{ fontSize: 40, backgroundColor: 'blue', width: 50 , borderRadius : 15 }}
+            style={{
+              fontSize: 40,
+              backgroundColor: 'blue',
+              width: 50,
+              borderRadius: 15,
+            }}
           >
             /
-          </button>&nbsp;&nbsp;&nbsp;
+          </button>
+          &nbsp;&nbsp;&nbsp;
           <button
             type="button"
             onClick={() => onModulus()}
-            style={{ fontSize: 40, backgroundColor: 'red', width: 50 , borderRadius : 15 }}
+            style={{
+              fontSize: 40,
+              backgroundColor: 'red',
+              width: 50,
+              borderRadius: 15,
+            }}
           >
             %
-          </button>&nbsp;&nbsp;&nbsp;
-          {/* <button
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button
             type="button"
-            onClick={() => onModulus()}
-            style={{ fontSize: 40, backgroundColor: 'cyan', width: 50 , borderRadius : 15 }}
+            onClick={() => onReset()}
+            style={{
+              fontSize: 40,
+              backgroundColor: 'cyan',
+              width: 'auto',
+              borderRadius: 15,
+            }}
           >
-            R
-          </button> */}
+            Reset
+          </button>
         </div>
       </div>
     </>
