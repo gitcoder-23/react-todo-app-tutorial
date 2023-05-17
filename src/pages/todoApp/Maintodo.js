@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 const MainTodo = () => {
   const [todoName, setTodoName] = useState('');
   const [viewData, setViewData] = useState('');
-  const [todoComplete, setTodoComplete] = useState(false);
   const [todoData, setTodoData] = useState([]);
   const [errorMessage, SetErrorMessage] = useState('');
 
@@ -22,22 +21,11 @@ const MainTodo = () => {
     const newTodo = {
       id: new Date().getTime(),
       todoTxt: todoName,
-      completed: todoComplete,
     };
     setTodoData([...todoData, newTodo]);
     setTodoName('');
     // setTodoData([...todoData].concat(newTodo));
     // setTodoData([...newTodo, todoName]);
-  };
-
-  const toggleComplete = (tId) => {
-    const toggleItem = [...todoData].filter((todo) => {
-      if (todo.id === tId) {
-        todo.completed = !todo.completed;
-      }
-      return todo;
-    });
-    setTodoData(toggleItem);
   };
 
   const viewClick = (vData) => {
@@ -75,14 +63,6 @@ const MainTodo = () => {
             value={todoName}
             onChange={onChangeInput}
             style={{ fontSize: 30 }}
-          />
-          &nbsp;&nbsp;&nbsp;
-          <input
-            style={{ fontSize: 50 }}
-            type="checkbox"
-            checked={todoData.completed}
-            onChange={(e) => setTodoComplete(e.target.checked)}
-            // onChange={() => toggleComplete(todoData.id)}
           />
           &nbsp;&nbsp;&nbsp;
           <button
