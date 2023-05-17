@@ -67,7 +67,7 @@ const MainTodo = () => {
             </thead>
             &nbsp;&nbsp;&nbsp;
             {todoData &&
-              todoData.reverse().map((tData, indx) => (
+              todoData.map((tData, indx) => (
                 <tbody>
                   <tr>
                     <td>{indx + 1}</td>
