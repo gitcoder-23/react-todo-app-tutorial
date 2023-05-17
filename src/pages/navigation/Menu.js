@@ -33,9 +33,12 @@ const Menu = () => {
       </button>
       &nbsp;&nbsp;&nbsp;
       <button>
+        <Link to="/todo"> Todo App</Link>
+      </button>
+      &nbsp;&nbsp;&nbsp;
+      <button>
         <Link to="/create">CreateTodo</Link>
       </button>
-
     </div>
   );
 };
