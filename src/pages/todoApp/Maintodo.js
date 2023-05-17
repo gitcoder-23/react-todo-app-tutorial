@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 const MainTodo = () => {
   const [todoName, setTodoName] = useState('');
   const [viewData, setViewData] = useState('');
-  const [todoData, setTodoData] = useState([]);
+  const [todoDatas, setTodoDatas] = useState([]);
   const [errorMessage, SetErrorMessage] = useState('');
+  const [todoEditing, SetTodoEditing] = useState(null);
+  const [editTodoName, SetEditTodoName] = useState('');
 
   const onChangeInput = (e) => {
     setTodoName(e.target.value);
@@ -22,10 +24,10 @@ const MainTodo = () => {
       id: new Date().getTime(),
       todoTxt: todoName,
     };
-    setTodoData([...todoData, newTodo]);
+    setTodoDatas([...todoDatas, newTodo]);
     setTodoName('');
-    // setTodoData([...todoData].concat(newTodo));
-    // setTodoData([...newTodo, todoName]);
+    // setTodoDatas([...todoDatas].concat(newTodo));
+    // setTodoDatas([...newTodo, todoName]);
   };
 
   const viewClick = (vData) => {
@@ -36,21 +38,44 @@ const MainTodo = () => {
     }, 3000);
   };
 
-  const editClick = (eData) => {
-    console.log('eData->', eData);
-    setTodoName([...eData]);
+  const editClick = (eId) => {
+    console.log('eId->', eId);
+    SetTodoEditing(eId);
+  };
+
+  const editSubmit = (esId) => {
+    const updatedTodo = [...todoDatas].map((edTodo) => {
+      if (edTodo.id === esId) {
+        edTodo.todoTxt = editTodoName;
+      }
+      return edTodo;
+    });
+    setTodoDatas(updatedTodo);
+    SetTodoEditing(null);
+    SetEditTodoName('');
+  };
+
+  const cancelEdit = (cId) => {
+    SetTodoEditing(null);
+    SetEditTodoName('');
   };
 
   const deleteClick = (dId) => {
     if (window.confirm('Do you want?')) {
-      const removeItem = [...todoData].filter((todo) => {
+      const removeItem = [...todoDatas].filter((todo) => {
         return todo.id !== dId;
       });
-      setTodoData(removeItem);
+      setTodoDatas(removeItem);
     }
   };
 
-  console.log('todoName-->', todoName, todoData, viewData, todoData.completed);
+  console.log(
+    'todoName-->',
+    todoName,
+    todoDatas,
+    viewData,
+    todoDatas.completed
+  );
   return (
     <div>
       <h2>Todo App</h2>
@@ -98,7 +123,7 @@ const MainTodo = () => {
           &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
         </>
       )}
-      {todoData.length === 0 ? (
+      {todoDatas.length === 0 ? (
         <h3 style={{ color: '#000' }}>No todo available!</h3>
       ) : (
         <div>
@@ -118,8 +143,8 @@ const MainTodo = () => {
               </tr>
             </thead>
             &nbsp;&nbsp;&nbsp;
-            {todoData &&
-              todoData.map((tData, indx) => (
+            {todoDatas &&
+              todoDatas.map((tData, indx) => (
                 <tbody key={tData.id}>
                   <tr>
                     <td
@@ -130,50 +155,95 @@ const MainTodo = () => {
                       {indx + 1}
                     </td>{' '}
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                    <td
-                      style={{
-                        fontSize: 18,
-                      }}
-                    >
-                      {tData.todoTxt}
-                    </td>{' '}
+                    {todoEditing === tData.id ? (
+                      <td
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        <input
+                          type="text"
+                          value={editTodoName}
+                          onChange={(e) => SetEditTodoName(e.target.value)}
+                        />
+                      </td>
+                    ) : (
+                      <td
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        {tData.todoTxt}
+                      </td>
+                    )}{' '}
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                     <td>
-                      <button
-                        type="button"
-                        style={{
-                          backgroundColor: 'green',
-                          color: '#fff',
-                          fontSize: 18,
-                        }}
-                        onClick={() => viewClick(tData)}
-                      >
-                        View
-                      </button>
-                      &nbsp;&nbsp;&nbsp;
-                      <button
-                        type="button"
-                        style={{
-                          backgroundColor: '#807800',
-                          color: '#fff',
-                          fontSize: 18,
-                        }}
-                        onClick={() => editClick(tData)}
-                      >
-                        Edit
-                      </button>
-                      &nbsp;&nbsp;&nbsp;
-                      <button
-                        type="button"
-                        style={{
-                          backgroundColor: '#807800',
-                          color: '#fff',
-                          fontSize: 18,
-                        }}
-                        onClick={() => deleteClick(tData.id)}
-                      >
-                        Delete
-                      </button>
+                      {todoEditing === tData.id ? (
+                        <>
+                          {' '}
+                          <button
+                            type="button"
+                            style={{
+                              backgroundColor: 'green',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => editSubmit(tData.id)}
+                          >
+                            Submit
+                          </button>
+                          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                          <button
+                            type="button"
+                            style={{
+                              backgroundColor: 'green',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => cancelEdit(tData.id)}
+                          >
+                            Cancel
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            style={{
+                              backgroundColor: 'green',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => viewClick(tData)}
+                          >
+                            View
+                          </button>
+                          &nbsp;&nbsp;&nbsp;
+                          <button
+                            type="button"
+                            style={{
+                              backgroundColor: '#807800',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => editClick(tData.id)}
+                          >
+                            Edit
+                          </button>
+                          &nbsp;&nbsp;&nbsp;
+                          <button
+                            type="button"
+                            style={{
+                              backgroundColor: '#807800',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => deleteClick(tData.id)}
+                          >
+                            Delete
+                          </button>
+                        </>
+                      )}
                     </td>{' '}
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   </tr>
