@@ -18,6 +18,7 @@ const MainTodo = () => {
         setErrorMessage('');
       }, 3000);
     } else {
+      setTodoDatas([]);
       setTodoDatas([...todoDatas, todoText]);
       setTodoText('');
     }
