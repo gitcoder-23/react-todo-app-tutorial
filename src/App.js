@@ -3,12 +3,12 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
 import ViewTodo from './pages/todoApp/ViewTodo';
-import CreateTodo from './pages/todoApp/CreateTodo';
 import Counter from './pages/otherApp/Counter';
 import SmallCalculator from './pages/otherApp/SmallCalculator';
 import SmallCounterApp from './pages/miniAps/SmallCounterApp';
 import SmallCounterByFourApp from './pages/myProjectTasks/SmallCounterByFourApp';
 import SmallCalculatorApp from './pages/miniAps/SmallCalculatorApp';
+import MainTodo from './pages/todoApp/Maintodo';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/calculator" element={<SmallCalculator />} />
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
-          <Route exact path="/create" element={<CreateTodo />} />
+          <Route exact path="/create" element={<MainTodo />} />
           <Route
             exact
             path="/small-counter"
