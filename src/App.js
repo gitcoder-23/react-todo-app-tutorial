@@ -2,7 +2,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
-import ViewTodo from './pages/todoApp/ViewTodo';
 import Counter from './pages/otherApp/Counter';
 import SmallCalculator from './pages/otherApp/SmallCalculator';
 import SmallCounterApp from './pages/miniAps/SmallCounterApp';
@@ -21,7 +20,6 @@ function App() {
           <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/calculator" element={<SmallCalculator />} />
           <Route exact path="/counter" element={<Counter />} />
-          <Route exact path="/view" element={<ViewTodo />} />
           <Route exact path="/" element={<MainTodo />} />
           <Route
             exact
