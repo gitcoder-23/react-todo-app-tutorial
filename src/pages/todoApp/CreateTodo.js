@@ -1,8 +1,9 @@
 import React from 'react'
+import Menu from '../navigation/Menu'
 
 const CreateTodo = () => {
   return (
-    <div>
+    <div><Menu/>
       CreateTodo
     </div>
   )

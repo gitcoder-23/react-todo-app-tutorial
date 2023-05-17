@@ -81,7 +81,8 @@ const SmallCalculatorApp = () => {
         <h2>Small Calculator App</h2>
         <div style={{ marginBottom: 20 }}>
           <input
-            type="text"
+            type="number"
+            placeholder='1st Number'
             name="fnumber"
             id="fnumber"
             style={{ fontSize: 30, borderRadius: 15 }}
@@ -90,7 +91,8 @@ const SmallCalculatorApp = () => {
           />{' '}
           &nbsp;&nbsp;&nbsp;&nbsp;
           <input
-            type="text"
+            type="number"
+            placeholder='2nd Number'
             name="lnumber"
             id="lnumber"
             style={{ fontSize: 30, borderRadius: 15 }}
@@ -100,7 +102,8 @@ const SmallCalculatorApp = () => {
           &nbsp;&nbsp;&nbsp;&nbsp;
           <span style={{ fontSize: 50 }}>=</span> &nbsp;&nbsp;&nbsp;&nbsp;
           <input
-            type="text"
+            type="number"
+            placeholder='Answar'
             name="lnumber"
             id="lnumber"
             disabled
