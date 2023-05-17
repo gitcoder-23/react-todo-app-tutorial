@@ -16,13 +16,13 @@ function App() {
       <div className="App">
         <h1>React All Apps Tutorial dev</h1>
         <Routes>
-          <Route exact path="/" element={<SmallCalculatorApp />} />
+          <Route exact path="/cal" element={<SmallCalculatorApp />} />
           <Route exact path="/small_count" element={<SmallCounterApp />} />
           <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/calculator" element={<SmallCalculator />} />
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
-          <Route exact path="/create" element={<MainTodo />} />
+          <Route exact path="/" element={<MainTodo />} />
           <Route
             exact
             path="/small-counter"
