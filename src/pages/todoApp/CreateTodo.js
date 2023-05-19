@@ -4,7 +4,11 @@ import Menu from '../navigation/Menu'
 const CreateTodo = () => {
   return (
     <div><Menu/>
-      CreateTodo
+      <div>
+        <br/>
+        <h1>TO Do List</h1>
+        <br/>
+      </div>
     </div>
   )
 }

@@ -38,6 +38,9 @@ const Menu = () => {
       &nbsp;&nbsp;&nbsp;
       <button>
         <Link to="/create">CreateTodo</Link>
+      </button>&nbsp;&nbsp;&nbsp;
+      <button>
+        <Link to="/DemoTodo">DemoTodo</Link>
       </button>
     </div>
   );

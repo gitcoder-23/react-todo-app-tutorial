@@ -33,7 +33,7 @@ const MainTodo = () => {
       <h2>Todo App CRUD</h2>
       <div>
         <form onSubmit={handleSubmit}>
-          {' '}
+          {' '} 
           <input
             type="text"
             style={{ fontSize: 20 }}
