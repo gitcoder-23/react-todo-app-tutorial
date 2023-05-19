@@ -8,3 +8,6 @@ https://aguidehub.com/blog/how-to-allow-only-numbers-in-input-field-react/?utm_c
 https://stackoverflow.com/questions/43067719/how-to-allow-only-numbers-in-textbox-in-reactjs
 
 https://codesandbox.io/s/adoring-minsky-9sqvv?file=/src/App.js:170-218
+
+// Input acepts only number Use string replace
+https://bobbyhadz.com/blog/react-only-number-input

@@ -7,14 +7,15 @@ const SmallCalculator = () => {
   const textInput = useRef(null);
 
   const onFNumberChange = (e) => {
-    // const regxVal = /^[0-9\b]+$/;
-    // if (regxVal.test(e.target.value)) {
-    //   setFnumber(e.target.value);
-    // }
     const value = e.target.value.replace(/\D/g, '');
     setFnumber(value);
   };
-  console.log('fnumber-->', fnumber);
+
+  const onLNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/g, '');
+    setLnumber(value);
+  };
+  console.log('lnumber-->', lnumber);
 
   const plusClick = () => {
     const resultValue = parseInt(fnumber) + parseInt(lnumber);
@@ -90,7 +91,7 @@ const SmallCalculator = () => {
             id="lnumber"
             style={{ fontSize: 20 }}
             value={lnumber}
-            onChange={(e) => setLnumber(e.target.value)}
+            onChange={onLNumberChange}
           />{' '}
           &nbsp;&nbsp;&nbsp;
           <span style={{ fontSize: 35, marginBottom: 30 }}>=</span>{' '}
