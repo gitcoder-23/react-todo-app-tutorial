@@ -6,6 +6,16 @@ const SmallCalculator = () => {
   const [result, setResult] = useState('');
   const textInput = useRef(null);
 
+  const onFNumberChange = (e) => {
+    // const regxVal = /^[0-9\b]+$/;
+    // if (regxVal.test(e.target.value)) {
+    //   setFnumber(e.target.value);
+    // }
+    const value = e.target.value.replace(/\D/g, '');
+    setFnumber(value);
+  };
+  console.log('fnumber-->', fnumber);
+
   const plusClick = () => {
     const resultValue = parseInt(fnumber) + parseInt(lnumber);
     // console.log('result-->', resultValue);
@@ -57,7 +67,7 @@ const SmallCalculator = () => {
     textInput.current.focus();
   }, []);
 
-  console.log('fnumber  & lnumber==>', fnumber, lnumber, result);
+  // console.log('fnumber  & lnumber==>', fnumber, lnumber, result);
   return (
     <>
       <div className="container">
@@ -71,7 +81,7 @@ const SmallCalculator = () => {
             autoFocus
             ref={textInput}
             style={{ fontSize: 20 }}
-            onChange={(e) => setFnumber(e.target.value)}
+            onChange={onFNumberChange}
           />{' '}
           &nbsp;&nbsp;&nbsp;
           <input

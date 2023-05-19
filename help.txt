@@ -1,3 +1,10 @@
 https://www.freecodecamp.org/news/react-hooks-cheatsheet/
 
 // https://youtu.be/EbnmosN64JQ
+
+// Input acepts only number
+https://aguidehub.com/blog/how-to-allow-only-numbers-in-input-field-react/?utm_content=expand_articleq  
+
+https://stackoverflow.com/questions/43067719/how-to-allow-only-numbers-in-textbox-in-reactjs
+
+https://codesandbox.io/s/adoring-minsky-9sqvv?file=/src/App.js:170-218
