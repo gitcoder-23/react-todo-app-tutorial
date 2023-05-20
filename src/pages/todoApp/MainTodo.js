@@ -5,6 +5,8 @@ const MainTodo = () => {
   const [todoDatas, setTodoDatas] = useState([]);
   const [todoText, setTodoText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [SlNo, setSlNo] = useState('');
+  const [TodoName, setTodoName] = useState('');
 
   const onInputChange = (event) => {
     setTodoText(event.target.value);
@@ -18,6 +20,8 @@ const MainTodo = () => {
         setErrorMessage('');
       }, 3000);
     } else {
+      setSlNo('SlNo');
+      setTodoName('TodoName');
       setTodoDatas([]);
       setTodoDatas([...todoDatas, todoText]);
       setTodoText('');
@@ -56,8 +60,8 @@ const MainTodo = () => {
         <table style={{ margin: '0 auto' }}>
           <thead>
             <tr>
-              <th>Sl.No</th>&nbsp;&nbsp;&nbsp;
-              <th>Todo Name</th>
+              <th>{SlNo}</th>&nbsp;&nbsp;&nbsp;
+              <th>{TodoName}</th>
             </tr>
           </thead>
           {todoDatas.map((tData, index) => (
