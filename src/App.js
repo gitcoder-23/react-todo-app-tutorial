@@ -9,8 +9,8 @@ import SmallCalculator from './pages/otherApp/SmallCalculator';
 import SmallCounterApp from './pages/miniAps/SmallCounterApp';
 import SmallCounterByFourApp from './pages/myProjectTasks/SmallCounterByFourApp';
 import SmallCalculatorApp from './pages/miniAps/SmallCalculatorApp';
-import MainTodo from './pages/todoApp/MainTodo';
 import DemoTodo from './pages/myProjectTasks/DemoTodo';
+import MainTodos from './pages/todoApp/MainTodos';
 
 function App() {
   return (
@@ -19,14 +19,14 @@ function App() {
         <h1>React All Apps Tutorial dev</h1>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/todo" element={<MainTodo />} />
+          <Route exact path="/todo" element={<MainTodos />} />
           <Route exact path="/small-cal" element={<SmallCalculatorApp />} />
           <Route exact path="/small_count" element={<SmallCounterApp />} />
           <Route exact path="/calculator" element={<SmallCalculator />} />
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
           <Route exact path="/create" element={<CreateTodo />} />
-          <Route exact path="/DemoTodo" element={<DemoTodo />} />
+          <Route exact path="/demo-todo" element={<DemoTodo />} />
 
           <Route
             exact

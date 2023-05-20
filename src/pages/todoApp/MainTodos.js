@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Menu from '../navigation/Menu';
 
-const MainTodo = () => {
+const MainTodos = () => {
   const [todoDatas, setTodoDatas] = useState([]);
   const [todoText, setTodoText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -37,7 +37,7 @@ const MainTodo = () => {
       <h2>Todo App CRUD</h2>
       <div>
         <form onSubmit={handleSubmit}>
-          {' '} 
+          {' '}
           <input
             type="text"
             style={{ fontSize: 20 }}
@@ -78,4 +78,4 @@ const MainTodo = () => {
   );
 };
 
-export default MainTodo;
+export default MainTodos;
