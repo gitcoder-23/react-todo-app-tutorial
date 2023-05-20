@@ -42,7 +42,12 @@ const MainTodos = () => {
           &nbsp;&nbsp;&nbsp;
           <button
             type="submit"
-            style={{ fontSize: 20, backgroundColor: 'green', color: '#fff' }}
+            disabled={!todoText}
+            style={{
+              fontSize: 20,
+              backgroundColor: !todoText ? 'grey' : 'green',
+              color: '#fff',
+            }}
           >
             Add
           </button>
