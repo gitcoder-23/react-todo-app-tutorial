@@ -5,6 +5,7 @@ const MainTodos = () => {
   const [todoDatas, setTodoDatas] = useState([]);
   const [todoText, setTodoText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [viewData, setViewData] = useState('');
 
   const onInputChange = (event) => {
     setTodoText(event.target.value);
@@ -26,6 +27,16 @@ const MainTodos = () => {
   console.log('todoText->', todoText);
   console.log('todoDatas->', todoDatas.length);
 
+  const viewClick = (vData) => {
+    console.log('vData-->', vData);
+    setViewData(vData);
+    setTimeout(() => {
+      setViewData('');
+    }, 3000);
+  };
+
+  console.log('viewData-->', viewData);
+
   return (
     <div>
       <Menu />
@@ -45,6 +56,7 @@ const MainTodos = () => {
             disabled={!todoText}
             style={{
               fontSize: 20,
+              // Style binding
               backgroundColor: !todoText ? 'grey' : 'green',
               color: '#fff',
             }}
@@ -55,6 +67,22 @@ const MainTodos = () => {
         <h4 style={{ color: 'red' }}>{errorMessage}</h4>
       </div>{' '}
       &nbsp;&nbsp;&nbsp;
+      {/* View Todo Show */}
+      {viewData === '' ? (
+        <></>
+      ) : (
+        <div
+          style={{
+            border: '1px solid rgb(0, 0, 0)',
+            margin: '0 auto 0',
+            width: '30%',
+          }}
+        >
+          <h2>View Specific Todo</h2>
+          <h3>{viewData}</h3>
+        </div>
+      )}{' '}
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
       {/* Table */}
       {todoDatas.length === 0 ? (
         <h3>No Todos available!!</h3>
@@ -65,6 +93,7 @@ const MainTodos = () => {
               <tr>
                 <th>Sl.No</th>&nbsp;&nbsp;&nbsp;
                 <th>Todo Name</th>
+                <th>Action</th>
               </tr>
             </thead>
             {todoDatas &&
@@ -73,6 +102,18 @@ const MainTodos = () => {
                   <tr>
                     <td>{index + 1}</td>&nbsp;&nbsp;&nbsp;
                     <td>{tData}</td>
+                    <td>
+                      <button
+                        style={{
+                          backgroundColor: 'rgb(92 121 13)',
+                          color: '#fff',
+                          fontSize: 18,
+                        }}
+                        onClick={() => viewClick(tData)}
+                      >
+                        View
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               ))}
