@@ -5,8 +5,6 @@ const MainTodos = () => {
   const [todoDatas, setTodoDatas] = useState([]);
   const [todoText, setTodoText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [SlNo, setSlNo] = useState('');
-  const [TodoName, setTodoName] = useState('');
 
   const onInputChange = (event) => {
     setTodoText(event.target.value);
@@ -20,8 +18,6 @@ const MainTodos = () => {
         setErrorMessage('');
       }, 3000);
     } else {
-      setSlNo('SlNo');
-      setTodoName('TodoName');
       setTodoDatas([]);
       setTodoDatas([...todoDatas, todoText]);
       setTodoText('');
@@ -29,7 +25,7 @@ const MainTodos = () => {
   };
 
   console.log('todoText->', todoText);
-  console.log('todoDatas->', todoDatas);
+  console.log('todoDatas->', todoDatas.length);
 
   return (
     <div>
@@ -56,24 +52,29 @@ const MainTodos = () => {
       </div>{' '}
       &nbsp;&nbsp;&nbsp;
       {/* Table */}
-      <div>
-        <table style={{ margin: '0 auto' }}>
-          <thead>
-            <tr>
-              <th>{SlNo}</th>&nbsp;&nbsp;&nbsp;
-              <th>{TodoName}</th>
-            </tr>
-          </thead>
-          {todoDatas.map((tData, index) => (
-            <tbody>
+      {todoDatas.length === 0 ? (
+        <h3>No Todos available!!</h3>
+      ) : (
+        <div>
+          <table style={{ margin: '0 auto' }}>
+            <thead>
               <tr>
-                <td>{index + 1}</td>&nbsp;&nbsp;&nbsp;
-                <td>{tData}</td>
+                <th>Sl.No</th>&nbsp;&nbsp;&nbsp;
+                <th>Todo Name</th>
               </tr>
-            </tbody>
-          ))}
-        </table>
-      </div>
+            </thead>
+            {todoDatas &&
+              todoDatas.map((tData, index) => (
+                <tbody>
+                  <tr>
+                    <td>{index + 1}</td>&nbsp;&nbsp;&nbsp;
+                    <td>{tData}</td>
+                  </tr>
+                </tbody>
+              ))}
+          </table>
+        </div>
+      )}
     </div>
   );
 };
