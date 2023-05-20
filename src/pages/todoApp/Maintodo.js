@@ -69,13 +69,6 @@ const MainTodo = () => {
     }
   };
 
-  console.log(
-    'todoName-->',
-    todoName,
-    todoDatas,
-    viewData,
-    todoDatas.completed
-  );
   return (
     <div>
       <h2>Todo App</h2>
