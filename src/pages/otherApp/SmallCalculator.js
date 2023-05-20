@@ -7,15 +7,29 @@ const SmallCalculator = () => {
   const [result, setResult] = useState('');
   const textInput = useRef(null);
 
+  const onFnumberChange = (ev) => {
+    const value = ev.target.value.replace(/\D/g, '');
+    setFnumber(value);
+  };
+
+  const onLnumberChange = (ev) => {
+    const value = ev.target.value.replace(/\D/g, '');
+    setLnumber(value);
+  };
+
   const plusClick = () => {
     const resultValue = parseInt(fnumber) + parseInt(lnumber);
-    // console.log('result-->', resultValue);
-    setResult(resultValue);
-    setTimeout(() => {
+    console.log('result-->', resultValue);
+    if (isNaN(resultValue)) {
       setResult('');
-      setFnumber('');
-      setLnumber('');
-    }, 3000);
+    } else {
+      setResult(resultValue);
+      setTimeout(() => {
+        setResult('');
+        setFnumber('');
+        setLnumber('');
+      }, 3000);
+    }
   };
   const minusClick = () => {
     const resultValue = parseInt(fnumber) - parseInt(lnumber);
@@ -73,7 +87,7 @@ const SmallCalculator = () => {
             autoFocus
             ref={textInput}
             style={{ fontSize: 20 }}
-            onChange={(e) => setFnumber(e.target.value)}
+            onChange={onFnumberChange}
           />{' '}
           &nbsp;&nbsp;&nbsp;
           <input
@@ -82,7 +96,7 @@ const SmallCalculator = () => {
             id="lnumber"
             style={{ fontSize: 20 }}
             value={lnumber}
-            onChange={(e) => setLnumber(e.target.value)}
+            onChange={(e) => onLnumberChange(e)}
           />{' '}
           &nbsp;&nbsp;&nbsp;
           <span style={{ fontSize: 35, marginBottom: 30 }}>=</span>{' '}
