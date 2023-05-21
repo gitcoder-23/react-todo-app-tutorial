@@ -8,6 +8,9 @@ const MainTodos = () => {
   const [todoText, setTodoText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [viewData, setViewData] = useState('');
+  //edit
+  const [editTodoText, setEditTodoText] = useState('');
+  const [todoEditingData, setTodoEditingData] = useState(null);
 
   const onInputChange = (event) => {
     setTodoText(event.target.value);
@@ -53,6 +56,34 @@ const MainTodos = () => {
       setTodoDatas(removeTodo);
     }
   };
+
+  const editCancel = (cId) => {
+    setTodoEditingData(null);
+    setEditTodoText('');
+  };
+
+  const editClick = (eId, todoGetData) => {
+    if (window.confirm('Do you want to edit?')) {
+      setTodoEditingData(eId);
+      setEditTodoText(todoGetData);
+    }
+  };
+
+  const editSubmit = (eId, todoGetData) => {
+    console.log('editSubmit->', eId, todoGetData);
+    if (window.confirm('Do you want to edit?')) {
+      const updateTodo = [...todoDatas].map((eData) => {
+        if (eData.todoId === eId) {
+          eData.todoText = editTodoText;
+        }
+        return eData;
+      });
+      setTodoDatas(updateTodo);
+      editCancel();
+    }
+  };
+
+  console.log('todoEditingData-->', todoEditingData);
 
   return (
     <div>
@@ -118,29 +149,92 @@ const MainTodos = () => {
                 <tbody>
                   <tr>
                     <td>{index + 1}</td>&nbsp;&nbsp;&nbsp;
-                    <td>{tData.todoText}</td>
+                    {todoEditingData === tData.todoId ? (
+                      <td>
+                        <input
+                          type="text"
+                          name="todoEditName"
+                          id="todoEditName"
+                          value={editTodoText}
+                          onChange={(e) => setEditTodoText(e.target.value)}
+                        />
+                      </td>
+                    ) : (
+                      <td>{tData.todoText}</td>
+                    )}
                     <td>
-                      <button
-                        style={{
-                          backgroundColor: 'rgb(92 121 13)',
-                          color: '#fff',
-                          fontSize: 18,
-                        }}
-                        onClick={() => viewClick(tData)}
-                      >
-                        View
-                      </button>
                       &nbsp;&nbsp;&nbsp;&nbsp;
-                      <button
-                        style={{
-                          backgroundColor: 'red',
-                          color: '#fff',
-                          fontSize: 18,
-                        }}
-                        onClick={() => deleteClick(tData.todoId)}
-                      >
-                        Delete
-                      </button>
+                      {todoEditingData === tData.todoId ? (
+                        <button
+                          style={{
+                            backgroundColor: !editTodoText
+                              ? 'grey'
+                              : 'rgb(92 121 13)',
+                            color: '#fff',
+                            fontSize: 18,
+                          }}
+                          disabled={!editTodoText}
+                          onClick={() =>
+                            editSubmit(tData.todoId, tData.todoText)
+                          }
+                        >
+                          Edit Submit
+                        </button>
+                      ) : (
+                        <button
+                          style={{
+                            backgroundColor: 'rgb(92 121 13)',
+                            color: '#fff',
+                            fontSize: 18,
+                          }}
+                          onClick={() =>
+                            editClick(tData.todoId, tData.todoText)
+                          }
+                        >
+                          Edit
+                        </button>
+                      )}
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      {todoEditingData === tData.todoId ? (
+                        <>
+                          <button
+                            style={{
+                              backgroundColor: 'blue',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => editCancel(tData.todoId)}
+                          >
+                            Cancel
+                          </button>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                        </>
+                      ) : (
+                        <>
+                          {' '}
+                          <button
+                            style={{
+                              backgroundColor: 'rgb(92 121 13)',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => viewClick(tData)}
+                          >
+                            View
+                          </button>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                          <button
+                            style={{
+                              backgroundColor: 'red',
+                              color: '#fff',
+                              fontSize: 18,
+                            }}
+                            onClick={() => deleteClick(tData.todoId)}
+                          >
+                            Delete
+                          </button>
+                        </>
+                      )}
                     </td>
                   </tr>
                 </tbody>
