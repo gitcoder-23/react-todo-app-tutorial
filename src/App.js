@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/counter" element={<Counter />} />
           <Route exact path="/view" element={<ViewTodo />} />
           <Route exact path="/create" element={<CreateTodo />} />
-          <Route exact path="/demo-todo" element={<DemoTodo />} />
+          <Route exact path="/demotodo" element={<DemoTodo />} />
 
           <Route
             exact

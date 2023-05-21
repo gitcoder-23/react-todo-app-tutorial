@@ -34,32 +34,44 @@ const SmallCalculator = () => {
   const minusClick = () => {
     const resultValue = parseInt(fnumber) - parseInt(lnumber);
     console.log('result-->', resultValue);
-    setResult(resultValue);
+    if (isNaN(resultValue)) {
+      setResult('');
+    } else {
+      setResult(resultValue);
     setTimeout(() => {
       setResult('');
       setFnumber('');
       setLnumber('');
     }, 3000);
+    }
   };
   const multiplyClick = () => {
     const resultValue = parseInt(fnumber) * parseInt(lnumber);
     console.log('result-->', resultValue);
-    setResult(resultValue);
+    if (isNaN(resultValue)) {
+      setResult('');
+    } else {
+      setResult(resultValue);
     setTimeout(() => {
       setResult('');
       setFnumber('');
       setLnumber('');
     }, 3000);
+    }
   };
   const divideClick = () => {
     const resultValue = parseInt(fnumber) / parseInt(lnumber);
     console.log('result-->', resultValue);
-    setResult(resultValue);
+    if (isNaN(resultValue)) {
+      setResult('');
+    } else {
+      setResult(resultValue);
     setTimeout(() => {
       setResult('');
       setFnumber('');
       setLnumber('');
     }, 3000);
+    }
   };
 
   const resetClick = () => {
