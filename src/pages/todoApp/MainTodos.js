@@ -36,13 +36,23 @@ const MainTodos = () => {
 
   const viewClick = (vData) => {
     console.log('vData-->', vData);
-    setViewData(vData);
+    setViewData(vData.todoText);
     setTimeout(() => {
       setViewData('');
     }, 3000);
   };
 
-  console.log('viewData-->', viewData);
+  const deleteClick = (dId) => {
+    console.log('dId-->', dId);
+    if (window.confirm('Do you want?')) {
+      const removeTodo = [...todoDatas].filter((tData, indx) => {
+        return tData.todoId !== dId;
+      });
+
+      console.log('removeTodo-->', removeTodo);
+      setTodoDatas(removeTodo);
+    }
+  };
 
   return (
     <div>
@@ -119,6 +129,17 @@ const MainTodos = () => {
                         onClick={() => viewClick(tData)}
                       >
                         View
+                      </button>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <button
+                        style={{
+                          backgroundColor: 'red',
+                          color: '#fff',
+                          fontSize: 18,
+                        }}
+                        onClick={() => deleteClick(tData.todoId)}
+                      >
+                        Delete
                       </button>
                     </td>
                   </tr>
