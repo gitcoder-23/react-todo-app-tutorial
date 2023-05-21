@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import Menu from '../navigation/Menu';
 
 const MainTodos = () => {
@@ -19,13 +21,18 @@ const MainTodos = () => {
         setErrorMessage('');
       }, 3000);
     } else {
-      setTodoDatas([...todoDatas, todoText]);
+      const newTodo = {
+        todoId: uuidv4(),
+        todoText: todoText,
+        todoSuccess: 'Successful',
+      };
+      setTodoDatas([...todoDatas, newTodo]);
       setTodoText('');
     }
   };
 
-  console.log('todoText->', todoText);
-  console.log('todoDatas->', todoDatas.length);
+  // console.log('todoText->', todoText);
+  console.log('todoDatas->', todoDatas);
 
   const viewClick = (vData) => {
     console.log('vData-->', vData);
@@ -101,7 +108,7 @@ const MainTodos = () => {
                 <tbody>
                   <tr>
                     <td>{index + 1}</td>&nbsp;&nbsp;&nbsp;
-                    <td>{tData}</td>
+                    <td>{tData.todoText}</td>
                     <td>
                       <button
                         style={{
