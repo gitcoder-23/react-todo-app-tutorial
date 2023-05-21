@@ -72,13 +72,16 @@ const DemoTodo = () => {
       <div>
       <table style={{margin : '0 auto'}}>
         <thead><tr><th>Sl.No</th>&nbsp;&nbsp;&nbsp;&nbsp;
-         <th>Todo Items</th></tr></thead>
+         <th>Todo Items</th>&nbsp;&nbsp;&nbsp;&nbsp;
+         <th>Actions</th>
+         </tr>
+         </thead>
          
         {todoMainData && todoMainData.map((tdData, tdIndex) => (
         <tbody>
          <tr>
           <td>{tdIndex+1}</td>&nbsp;&nbsp;&nbsp;&nbsp;
-             <td>{tdData}</td>
+             <td>{tdData}</td>&nbsp;&nbsp;&nbsp;&nbsp;
              <td>
               <button style={{backgroundColor: 'azure', borderRadius: 10}}
               onClick={()=>vClick(tdData)}
