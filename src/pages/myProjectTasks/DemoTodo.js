@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from "uuid";
+
 import Menu from '../navigation/Menu'
 
 const DemoTodo = () => {
@@ -6,6 +8,9 @@ const DemoTodo = () => {
   const [textTodo, setTextTodo] = useState('');
   const [error, setError] = useState('');
   const [vData, setVdata] = useState('');
+  //edit///
+  const [textEdit, setTextEdit] = useState('');
+  const [editId, setEditId] = useState('');
   
 
   const OnInput = (e) => {
@@ -21,20 +26,56 @@ const DemoTodo = () => {
 
       },3000);
     }else{
+      const ntodoData = {
+        tId : uuidv4(),
+        todoText : textTodo,
+        tsuccess : 'success',
+      };
       
-      setTodoMainData([...todoMainData, textTodo]);
+      setTodoMainData([...todoMainData, ntodoData]);
       setTextTodo('');
     }
   };
   console.log("todoMainData-->",todoMainData.length);
 
   const vClick = (view) =>{
+    console.log('view-->',view);
     setVdata(view);
     setTimeout(() =>{
       setVdata('');
     }, 3000)
   }
+  const delClick = (evD) => {
+    console.log("evD-->",evD);
+    if (window.confirm('Do you want to delete?')){
+    const deleteData =  [...todoMainData].filter((delData,delIndex) => {
+      console.log('delData-->',delData);
+      return delData.tId !== evD;
+    });
+    setTodoMainData(deleteData);
+  }}
+  const editClick = (evData, evId) => {
+    if (window.confirm('Do you want to edit?')){ 
+    console.log('evData-->',evData, 'evId-->',evId);
+    setTextEdit(evData);
+    setEditId(evId);}
+  }
+  const editSubmitClick = (teId) => {
+    const updateData =  [...todoMainData].map((eData) => {
+      console.log('eData-->',eData);
+      if (eData.tId === teId) {
+        eData.todoText = textEdit;
+      } 
+      return eData;
 
+    });
+    setTodoMainData(updateData);
+    editCancel();
+  };
+  const editCancel = () => {
+    setTextEdit('');
+    setEditId('');
+  }
 
   return (
     <div><Menu/>
@@ -72,24 +113,55 @@ const DemoTodo = () => {
       <div>
       <table style={{margin : '0 auto'}}>
         <thead><tr><th>Sl.No</th>&nbsp;&nbsp;&nbsp;&nbsp;
-         <th>Todo Items</th>&nbsp;&nbsp;&nbsp;&nbsp;
+         <th>Todo Items</th>&nbsp;
          <th>Actions</th>
          </tr>
          </thead>
          
-        {todoMainData && todoMainData.map((tdData, tdIndex) => (
+        {todoMainData && todoMainData.map((tdData, tdIndex) => {
+          console.log('tdData-->',tdData);
+          return (
         <tbody>
          <tr>
           <td>{tdIndex+1}</td>&nbsp;&nbsp;&nbsp;&nbsp;
-             <td>{tdData}</td>&nbsp;&nbsp;&nbsp;&nbsp;
+             {
+              editId===tdData.tId? 
+              (<td>
+                <input value={textEdit} style={{borderRadius:10}}
+                onChange={(ev) => setTextEdit(ev.target.value)}/></td>) 
+              : (<td>{tdData.todoText}</td>)
+             }
+             
              <td>
-              <button style={{backgroundColor: 'azure', borderRadius: 10}}
-              onClick={()=>vClick(tdData)}
-              >View</button>
-             </td>
+              {
+                editId===tdData.tId? (<><button style={{backgroundColor: 'blue', borderRadius: 10}}
+                onClick={() => editCancel()}>
+                  Cancel
+                </button>&nbsp;&nbsp;</>) : (<><button style={{backgroundColor: 'azure', borderRadius: 10}}
+                onClick={()=>vClick(tdData.todoText)}
+                >View</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button style={{backgroundColor: 'red', borderRadius: 10}}
+                onClick={() => delClick(tdData.tId)}
+                >
+                  Delete
+                </button>&nbsp;&nbsp;&nbsp;&nbsp;</>)
+              }
+              
+              {
+                editId===tdData.tId? ( <button style={{backgroundColor: 'blue', borderRadius: 10}}
+                onClick={() => editSubmitClick(tdData.tId)}>
+                  Edit Submit 
+                </button>) : 
+                (<button style={{backgroundColor: 'blue', borderRadius: 10}}
+              onClick={() => editClick(tdData.todoText, tdData.tId)}>
+                Edit
+              </button>)
+              }
+            </td>
           </tr>
            </tbody>
-       ))}
+       )
+       })}
        </table>
 
     </div>
