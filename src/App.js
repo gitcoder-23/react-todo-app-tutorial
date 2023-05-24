@@ -11,6 +11,8 @@ import SmallCounterByFourApp from './pages/myProjectTasks/SmallCounterByFourApp'
 import SmallCalculatorApp from './pages/miniAps/SmallCalculatorApp';
 import DemoTodo from './pages/myProjectTasks/DemoTodo';
 import MainTodos from './pages/todoApp/MainTodos';
+import TestLoop from './pages/myProjectTasks/TestLoop';
+
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route exact path="/view" element={<ViewTodo />} />
           <Route exact path="/create" element={<CreateTodo />} />
           <Route exact path="/demotodo" element={<DemoTodo />} />
+          <Route exact path="/testloop" element={<TestLoop />} />
+
 
           <Route
             exact
