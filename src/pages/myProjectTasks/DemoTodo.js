@@ -113,7 +113,7 @@ const DemoTodo = () => {
       <div>
       <table style={{margin : '0 auto'}}>
         <thead><tr><th>Sl.No</th>&nbsp;&nbsp;&nbsp;&nbsp;
-         <th>Todo Items</th>&nbsp;
+         <th>Todo Items</th>
          <th>Actions</th>
          </tr>
          </thead>
@@ -148,7 +148,8 @@ const DemoTodo = () => {
               }
               
               {
-                editId===tdData.tId? ( <button style={{backgroundColor: 'blue', borderRadius: 10}}
+                editId===tdData.tId? ( <button style={{backgroundColor: !textEdit ? 'grey': 'blueviolet', borderRadius: 10}}
+                disabled = {!textEdit}
                 onClick={() => editSubmitClick(tdData.tId)}>
                   Edit Submit 
                 </button>) : 
