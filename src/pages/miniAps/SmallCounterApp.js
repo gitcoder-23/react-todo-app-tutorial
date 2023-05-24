@@ -21,6 +21,15 @@ const SmallCounterApp = () => {
   };
 
   console.log('number--->', number);
+  const resultData = number;
+  // "Key", "Value"
+
+  const localData = localStorage.setItem(
+    'countResult',
+    JSON.stringify(resultData)
+  );
+  console.log('localData=>', JSON.parse(localStorage.getItem('countResult')));
+  // localStorage.removeItem('countResult');
 
   return (
     <div>
