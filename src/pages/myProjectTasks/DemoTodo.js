@@ -77,6 +77,19 @@ const DemoTodo = () => {
     setEditId('');
   }
 
+//local storage
+localStorage.setItem('InputData', JSON.stringify(textTodo));
+const lStorage = JSON.parse(localStorage.getItem('InputData'));
+console.log('lStorage-->',lStorage);
+
+localStorage.setItem('InnerData', JSON.stringify(todoMainData));
+const lStorage1 = JSON.parse(localStorage.getItem('InnerData'));
+console.log('lStorage1-->',lStorage1);
+
+localStorage.setItem('editedData', JSON.stringify(textEdit));
+const lStorage2 = JSON.parse(localStorage.getItem('editedData'));
+console.log('lStorage2-->',lStorage2);
+
   return (
     <div><Menu/>
     <h1 style={{backgroundColor:'blue', color:'white'}}>Todo App Project</h1>

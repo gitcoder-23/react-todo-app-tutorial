@@ -15,7 +15,7 @@ const Counter = () => {
     }
   };
 
-  // console.log('number-->', number);
+  console.log('number-->', number);
 
   localStorage.setItem('countedNumber', JSON.stringify(number));
 
