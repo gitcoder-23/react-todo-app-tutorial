@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.css'; // direct imported css file
 import HomePage from './pages/HomePage';
 import ViewTodo from './pages/todoApp/ViewTodo';
 import CreateTodo from './pages/todoApp/CreateTodo';

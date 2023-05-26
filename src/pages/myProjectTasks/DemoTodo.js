@@ -88,7 +88,7 @@ console.log('lStorage1-->',lStorage1);
 
 localStorage.setItem('editedData', JSON.stringify(textEdit));
 const lStorage2 = JSON.parse(localStorage.getItem('editedData'));
-console.log('lStorage2-->',lStorage2);
+console.log('lStorage2-->',lStorage2); 
 
   return (
     <div><Menu/>
