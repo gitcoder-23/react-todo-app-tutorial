@@ -21,7 +21,7 @@ const UserList = () => {
     getAllUser();
   }, []);
 
-  console.log('userDatas->', userDatas);
+  // console.log('userDatas->', userDatas);
 
   return (
     <div>
@@ -41,9 +41,9 @@ const UserList = () => {
           </thead>
           {userDatas &&
             userDatas.map((uData, index) => {
-              console.log('uData-->', uData);
+              // console.log('uData-->', uData);
               return (
-                <tbody>
+                <tbody key={uData.id}>
                   <tr>
                     <td>{uData.id}</td>
                     <td>{uData.name}</td>&nbsp;&nbsp;&nbsp;
