@@ -12,7 +12,7 @@ import SmallCalculatorApp from './pages/miniAps/SmallCalculatorApp';
 import DemoTodo from './pages/myProjectTasks/DemoTodo';
 import MainTodos from './pages/todoApp/MainTodos';
 import TestLoop from './pages/myProjectTasks/TestLoop';
-
+import UserList from './pages/AppUsingAPI/user/UserList';
 
 function App() {
   return (
@@ -31,12 +31,14 @@ function App() {
           <Route exact path="/demotodo" element={<DemoTodo />} />
           <Route exact path="/testloop" element={<TestLoop />} />
 
-
           <Route
             exact
             path="/small-counter"
             element={<SmallCounterByFourApp />}
           />
+
+          {/* Api App */}
+          <Route exact path="/userlist" element={<UserList />} />
         </Routes>
       </div>
     </>
