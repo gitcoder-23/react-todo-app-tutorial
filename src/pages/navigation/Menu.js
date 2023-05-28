@@ -51,6 +51,9 @@ const Menu = () => {
       <button>
         <Link to="/testloop">TestLoop</Link>
       </button>
+      <button>
+        <Link to="/userphotos">Userphotos</Link>
+      </button>
     </div>
   );
 };

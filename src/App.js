@@ -13,6 +13,7 @@ import DemoTodo from './pages/myProjectTasks/DemoTodo';
 import MainTodos from './pages/todoApp/MainTodos';
 import TestLoop from './pages/myProjectTasks/TestLoop';
 import UserList from './pages/AppUsingAPI/user/UserList';
+import UserPhotos from './pages/AppUsingAPI/user/UserPhotos';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
           <Route exact path="/create" element={<CreateTodo />} />
           <Route exact path="/demotodo" element={<DemoTodo />} />
           <Route exact path="/testloop" element={<TestLoop />} />
+          <Route exact path="/userphotos" element={<UserPhotos />} />
+
 
           <Route
             exact

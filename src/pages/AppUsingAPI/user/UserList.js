@@ -12,7 +12,7 @@ const UserList = () => {
       .get('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
         setIsLoading(true);
-        console.log('response-->', response.data.length);
+        // console.log('response-->', response.data.length);
         if (response.status === 200) {
           setUserDatas(response.data);
           setIsLoading(false);
