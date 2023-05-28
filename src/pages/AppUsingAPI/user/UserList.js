@@ -9,7 +9,7 @@ const UserList = () => {
     axios
       .get('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
-        // console.log('response-->', response.data);
+        console.log('response-->', response.data);
         setUserDatas(response.data);
       })
       .catch((err) => {
