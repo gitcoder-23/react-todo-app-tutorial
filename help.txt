@@ -1,1 +1,5 @@
 https://www.freecodecamp.org/news/react-hooks-cheatsheet/
+
+
+// Status Code Image
+https://javaconceptoftheday.com/http-status-codes-cheat-sheet/
