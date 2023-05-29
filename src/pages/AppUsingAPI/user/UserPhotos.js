@@ -7,7 +7,7 @@ import axios from 'axios';
 const UserPhotos = () => {
     const [photoData, setPhotoData] = useState([]);
     const [showData, setShowData] = useState(false);
-    const [vData, setVdata] = useState('');
+    const [vData, setVdata] = useState();
 
     const getAllPhotos = () => {
         setShowData(true);
@@ -38,17 +38,34 @@ const vPhoto = (show)=>{
         setVdata('');
     }, 5000);
 }
+console.log('vData-->',vData);
+
+const dPhoto = (del)=>{
+    console.log('del-->', del);
+    if(window.confirm('Do you want to delete?')){
+        const delphoto = [...photoData].filter((dData,dIndex) => dData.id !== del);
+        setPhotoData(delphoto);
+    }
+}
 
   return (
     <div><Menu/>
-    <div>
+    <div style={{backgroundColor : 'azure'}}>
         <h1 style={{color : 'red'}}>
             User Photos
         </h1>
-        {vData === '' ? (<></>) : (
-            <div style={{border : '1px solid rgb(0,0,0)', margin : '0 auto 0', width : '0 auto 0'}}>
-                <h2>Photo Info</h2>
-                <h3>{vData}</h3>
+        {/* <h2>
+            view data:
+        </h2> */}
+        {!vData ? (<></>) : (
+            <div style={{border : '5px solid rgb(0,0,0)', margin : '0 auto 0', width : '40%', 
+            backgroundColor : 'white', color:'blue', borderRadius:'30px'}}>
+                <h3>URL Image</h3>
+                <img alt={vData.id} style={{width :'10%'}} src={vData.url} />
+                <h3>Photo Id : {vData.id}</h3>
+                <h3>Photo Title : {vData.title}</h3>
+
+
             </div>
         )}
         {showData === true ? (
@@ -60,23 +77,29 @@ const vPhoto = (show)=>{
             <tr>
                 <th>Sl. No</th>
                 <th>Title</th>
-                <th>URL</th>&nbsp;
+                <th>Image</th>
                 <th col='3'>Modify</th>
             </tr>
         </thead>
         {photoData && photoData.map((pData, index) => {
         return (
-            <tbody key={pData.id}>
+            <tbody key={index}>
                 <tr>
                     <td>{pData.id}</td>
                     <td>{pData.title}</td>
-                    <td>{pData.url}</td>&nbsp;
+                    <td><img style={{width:'10%'}} alt='' src={pData.url}/></td>
                     <td>
                         <button style={{backgroundColor : 'yellowgreen', borderRadius : 10}}
-                        onClick={()=> vPhoto(pData.url)}
-                        >View</button>&nbsp;
-                        <button style={{backgroundColor : 'yellow', borderRadius : 10}}>Edit</button>&nbsp;
-                        <button style={{backgroundColor : 'red', borderRadius : 10, color : '#fff'}}>Delete</button>&nbsp;
+                        onClick={()=> vPhoto(pData)}>
+                            View
+                        </button>
+
+                        <button style={{backgroundColor : 'yellow', borderRadius : 10}}>Edit</button>
+
+                        <button style={{backgroundColor : 'red', borderRadius : 10, color : '#fff'}}
+                        onClick={()=> dPhoto(pData.id)}>
+                            Delete
+                        </button>
                     </td>
                 </tr>
             </tbody>
