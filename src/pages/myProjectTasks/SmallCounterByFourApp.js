@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Menu from '../navigation/Menu';
 
 
 const SmallCounterByFourApp = () => {
@@ -15,7 +14,6 @@ const SmallCounterByFourApp = () => {
   console.log('newNumber-->', newNumber);
   return (
     <div style={{ backgroundColor: 'cyan' }}>
-      <Menu/>
       <h2>SmallCounterByFourApp</h2>
       <h4 style={{ fontSize: 100 }}>
         <span>{newNumber}</span>

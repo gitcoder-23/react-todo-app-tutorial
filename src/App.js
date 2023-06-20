@@ -14,12 +14,14 @@ import MainTodos from './pages/todoApp/MainTodos';
 import TestLoop from './pages/myProjectTasks/TestLoop';
 import UserList from './pages/AppUsingAPI/user/UserList';
 import UserPhotos from './pages/AppUsingAPI/user/UserPhotos';
+import Menu from './pages/navigation/Menu';
 
 function App() {
   return (
     <>
       <div className="App">
-        <h1>React All Apps Tutorial dev</h1>
+        <h1>React App Dev Tutorial</h1>
+        <Menu/>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/todo" element={<MainTodos />} />

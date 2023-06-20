@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Menu from '../../navigation/Menu';
 import axios from 'axios';
 
 const UserList = () => {
   const [userDatas, setUserDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+
 
   const getAllUser = () => {
     setIsLoading(true);
@@ -12,7 +13,7 @@ const UserList = () => {
       .get('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
         setIsLoading(true);
-        // console.log('response-->', response.data.length);
+        console.log('response-->', response.data.length);
         if (response.status === 200) {
           setUserDatas(response.data);
           setIsLoading(false);
@@ -32,7 +33,6 @@ const UserList = () => {
 
   return (
     <div>
-      <Menu />
       <div>
         <h1>User List</h1>
         {isLoading === true ? (

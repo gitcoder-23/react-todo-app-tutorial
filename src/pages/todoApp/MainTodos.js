@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import Menu from '../navigation/Menu';
 
 const MainTodos = () => {
   const [todoDatas, setTodoDatas] = useState([]);
@@ -87,7 +86,6 @@ const MainTodos = () => {
 
   return (
     <div>
-      <Menu />
       <h2>Todo App CRUD</h2>
       <div>
         <form onSubmit={handleSubmit}>

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Menu from '../navigation/Menu'
 
 
 
@@ -28,7 +27,7 @@ const TestLoop = () => {
 
 
   return (
-    <div style={{backgroundColor : 'yellowgreen'}}><Menu/>
+    <div style={{backgroundColor : 'yellowgreen'}}>
       <div style={{backgroundColor : 'yellow'}}><h1>Small Tutorials</h1>
       <div>
         <form onSubmit={inputSubmit}>

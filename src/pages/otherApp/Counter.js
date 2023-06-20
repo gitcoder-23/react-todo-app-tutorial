@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Menu from '../navigation/Menu';
 
 const Counter = () => {
   const [number, setNumber] = useState(0);
@@ -25,7 +24,6 @@ const Counter = () => {
   return (
     <>
       <div className="container">
-        <Menu />
         <h3>Counter App</h3>
         <h4 style={{ fontSize: 100 }}>
           <span>{number ?? storeCountedNum}</span>

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Menu from '../../navigation/Menu';
 import axios from 'axios';
 
 
@@ -49,7 +48,7 @@ const dPhoto = (del)=>{
 }
 
   return (
-    <div><Menu/>
+    <div className='container'>
     <div style={{backgroundColor : 'azure'}}>
         <h1 style={{color : 'red'}}>
             User Photos
