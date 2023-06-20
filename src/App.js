@@ -35,7 +35,6 @@ function App() {
           <Route exact path="/testloop" element={<TestLoop />} />
           <Route exact path="/userphotos" element={<UserPhotos />} />
 
-
           <Route
             exact
             path="/small-counter"
