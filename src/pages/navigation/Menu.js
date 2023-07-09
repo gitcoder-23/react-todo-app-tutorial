@@ -6,10 +6,10 @@ import { Container, Dropdown, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 const Menu = () => {
   return (
     <> 
-    <div className="container mb-3">
+    <div>
     <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">My Apps</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">

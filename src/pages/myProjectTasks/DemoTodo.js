@@ -131,40 +131,35 @@ console.log('lStorage2-->',lStorage2);
 </nav>
     </> */}
     <h2><Badge bg="secondary">ToDo Items</Badge></h2>
-    <div className='container my-4'>
+    <div className='container my-4' style={{margin:'0 auto 0',width:'60%'}}>
         <Form onSubmit={TextSubmit}>
-          <div className='row'>
-            <div className="col-8">
+          {/* <div className='row' style={{margin:'0 auto 0'}}>
+            <div className="col-md-12"> */}
             <InputGroup className="mb-3">
-          <InputGroup.Text>Enter todo Item here = </InputGroup.Text>
+          <InputGroup.Text>Enter todo Item here :</InputGroup.Text>
             <Form.Control aria-label="Todo Item" value={textTodo} onChange={OnInput} />
-          </InputGroup>
-            </div>
-        <div className="col-4">
-        <Button type='submit' variant="info">
+            <Button type='submit' variant="outline-info">
           Add to List
           </Button>
-        </div>
+          </InputGroup>
+            {/* </div>
         
-          </div>
+          </div> */}
     </Form>{' '}
     <div><h4 style={{color: 'red'}}>{error}</h4></div>{' '}
     {vData === '' ? (<></>) : 
     (
-      <div style={{
-        border: '1px solid rgb(0, 0, 0)',
-        margin: '0 auto 0',
-        width: '30%',
-      }}>
-        <h2>Todo Item Details</h2>
-        <h3>{vData}</h3>
+      <div className="card mb-3" style={{width:'40%',margin:'0 auto 0'}}>
+        <h4 style={{color:'yellowgreen'}}>Todo Item Details</h4>
+        <h5>{vData}</h5>
       </div>
     )}
     
-    {todoMainData.length === 0 ? (<h2>No Todo Data</h2>) 
+    {todoMainData.length === 0 ? (<span style={{color:'red'}}>No Todo Data</span>) 
     :(
-      <div>
-      <table style={{margin : '0 auto'}}>
+      <div className="card">
+        <div className="card-body">
+      <table className="table table-columns" style={{margin : '0 auto'}}>
         <thead><tr><th>Sl.No</th>&nbsp;&nbsp;&nbsp;&nbsp;
          <th>Todo Items</th>
          <th>Actions</th>
@@ -180,20 +175,23 @@ console.log('lStorage2-->',lStorage2);
              {
               editId===tdData.tId? 
               (<td>
-                <input value={textEdit} style={{borderRadius:10}}
-                onChange={(ev) => setTextEdit(ev.target.value)}/></td>) 
+                <div class="input-group input-group-sm">
+                <input value={textEdit} type='text' className='form-control' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                onChange={(ev) => setTextEdit(ev.target.value)} style={{marginRight:'10px'}}/>
+                </div>
+               </td>) 
               : (<td>{tdData.todoText}</td>)
              }
              
              <td>
               {
-                editId===tdData.tId? (<><button style={{backgroundColor: 'blue', borderRadius: 10}}
+                editId===tdData.tId? (<><button className='btn btn-danger btn-sm'
                 onClick={() => editCancel()}>
                   Cancel
-                </button>&nbsp;&nbsp;</>) : (<><button style={{backgroundColor: 'azure', borderRadius: 10}}
+                </button>&nbsp;&nbsp;</>) : (<><button className='btn btn-primary btn-sm'
                 onClick={()=>vClick(tdData.todoText)}
                 >View</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <button style={{backgroundColor: 'red', borderRadius: 10}}
+                <button className='btn btn-danger btn-sm'
                 onClick={() => delClick(tdData.tId)}
                 >
                   Delete
@@ -201,12 +199,12 @@ console.log('lStorage2-->',lStorage2);
               }
               
               {
-                editId===tdData.tId? ( <button style={{backgroundColor: !textEdit ? 'grey': 'blueviolet', borderRadius: 10}}
+                editId===tdData.tId? ( <button className={!textEdit ?'btn btn-secondary btn-sm' : 'btn btn-success btn-sm'}
                 disabled = {!textEdit}
                 onClick={() => editSubmitClick(tdData.tId)}>
                   Edit Submit 
                 </button>) : 
-                (<button style={{backgroundColor: 'blue', borderRadius: 10}}
+                (<button className='btn btn-success btn-sm'
               onClick={() => editClick(tdData.todoText, tdData.tId)}>
                 Edit
               </button>)
@@ -218,6 +216,7 @@ console.log('lStorage2-->',lStorage2);
        })}
        </table>
 
+    </div>
     </div>
     )}
     
