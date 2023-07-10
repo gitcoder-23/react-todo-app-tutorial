@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>React App Dev Tutorial</h1>
         <Menu/>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
