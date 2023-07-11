@@ -1,25 +1,24 @@
 import React from "react";
 
-const HomePageModal = ({ dataInArray }) => {
+const HomePageModal = ({ vData,setVdata,dataInArray,setDataInArray }) => {
+
+  const handleSave = (saveId)=>{
+    console.log('saveId-->',saveId);
+  }
+
   return (
     <div>
-      {/* <!-- Button trigger modal --> */}
-      {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-View
-</button> */}
-
-      {/* <!-- Modal --> */}
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
+              <h1 className="modal-title fs-5">
                 Item Details
               </h1>
               <button
@@ -29,14 +28,22 @@ View
                 aria-label="Close"
               ></button>
             </div>
-            {dataInArray && dataInArray.map((data,index)=>(
-                 <div className="modal-body" key={data.id}>
-                 <ol className="list-group list-group-numbered">
-                   <li className="list-group-item">Item No : {index+1}</li>
-                   <li className="list-group-item">Item Name : {data.todoItem}</li>
-                 </ol>
-               </div>
-            ))}
+            <div className="modal-body">
+              <div className="input-group input-group-md mb-3">
+                <span className="input-group-text">
+                Item Name :
+                </span>
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-md"
+                  value={vData.todoItem}
+                  onChange={(ev)=>setVdata(ev.target.value)}
+                />
+              </div>
+            </div>
+
             <div className="modal-footer">
               <button
                 type="button"
@@ -45,7 +52,9 @@ View
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
+              <button type="button" className="btn btn-primary"
+              onClick={()=>handleSave(vData.id)}
+              >
                 Save changes
               </button>
             </div>

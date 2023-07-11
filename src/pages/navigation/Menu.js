@@ -7,7 +7,7 @@ const Menu = () => {
   return (
     <> 
     <div>
-    <Navbar bg="primary" data-bs-theme="dark">
+    <Navbar bg="warning" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">My Apps</Navbar.Brand>
           <Nav className="me-auto">

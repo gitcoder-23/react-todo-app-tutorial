@@ -5,7 +5,7 @@ import HomePageModal from "./HomePageModal";
 const HomePage = () => {
   const [dataInput, setDataInput] = useState("");
   const [dataInArray, setDataInArray] = useState([]);
-  // const [vData, setVdata] = useState('');
+  const [vData, setVdata] = useState({});
   const [errorMsg, setErrorMsg] = useState("");
 
   const inputTodo = (e) => {
@@ -41,10 +41,17 @@ const HomePage = () => {
     }
   }
 
+  const viewItem = (item)=>{
+    console.log('item-->',item);
+    setVdata(item);
+  }
+  console.log('vData-->',vData);
+
+
   return (
     <div className="container my-4">
       <h2>
-        <span className="badge bg-secondary">My Todo App</span>
+        <span className="badge bg-secondary">My Todo List</span>
       </h2>
       <div className="container mt-4" style={{ width: "60%" }}>
         {errorMsg ? (
@@ -74,7 +81,7 @@ const HomePage = () => {
               />
               <button
                 type="button"
-                className="btn btn-primary btn-sm"
+                className="btn btn-success btn-sm"
                 onClick={() => handleSubmit()}
               >
                 (+) Add
@@ -103,13 +110,16 @@ const HomePage = () => {
                        role="group"
                        aria-label="Basic mixed styles example"
                      >
-                       <button type="button" className="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                         View
-                       </button>
-                       <HomePageModal dataInArray={dataInArray}/>
-                       <button type="button" className="btn btn-warning">
+                       <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                       onClick={()=>viewItem(data)}>
                          Edit
                        </button>
+                       <HomePageModal 
+                       vData={vData}
+                       setVdata={setVdata}
+                       dataInArray={dataInArray}
+                       setDataInArray={setDataInArray}
+                       />
                        <button type="button" className="btn btn-danger"
                        onClick={()=>delFunc(data.id)}
                        >
