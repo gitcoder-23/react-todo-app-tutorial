@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import HomePageModal from "./HomePageModal";
+import EditModal from "./todoApp/homepageModal/EditModal";
 
 const HomePage = () => {
   const [dataInput, setDataInput] = useState("");
   const [dataInArray, setDataInArray] = useState([]);
-  const [vData, setVdata] = useState({});
+  // const [vData, setVdata] = useState({});
   const [errorMsg, setErrorMsg] = useState("");
 
   const inputTodo = (e) => {
@@ -28,7 +28,7 @@ const HomePage = () => {
       setDataInput("");
     }
   };
-  console.log("dataInArray-->", dataInArray);
+  // console.log("dataInArray-->", dataInArray);
 
   const delFunc = (del)=>{
     console.log('del-->',del);
@@ -43,9 +43,8 @@ const HomePage = () => {
 
   const viewItem = (item)=>{
     console.log('item-->',item);
-    setVdata(item);
   }
-  console.log('vData-->',vData);
+  // console.log('vData-->',vData);
 
 
   return (
@@ -114,12 +113,7 @@ const HomePage = () => {
                        onClick={()=>viewItem(data)}>
                          Edit
                        </button>
-                       <HomePageModal 
-                       vData={vData}
-                       setVdata={setVdata}
-                       dataInArray={dataInArray}
-                       setDataInArray={setDataInArray}
-                       />
+                       <EditModal/>
                        <button type="button" className="btn btn-danger"
                        onClick={()=>delFunc(data.id)}
                        >
