@@ -49,11 +49,11 @@ const HomePage = () => {
   };
   console.log("vData-->", vData, "edId-->", edId);
 
-  const saveEdit = eIndex => {
-    console.log('eIndex-->',eIndex);
+  const saveEdit = savedDataId => {
+    console.log('savedDataId-->',savedDataId);
     const updateData = [...dataInArray].map((upData,upIndex) => {
-      console.log('upData-->',upData);
-      if(upIndex === eIndex){
+      console.log('upDataID-->',upData.id);
+      if(upData.id === savedDataId){
         upData.todoItem = vData ;
       }
       return upData;
@@ -187,7 +187,7 @@ const HomePage = () => {
                                     type="button"
                                     className="btn btn-primary"
                                     data-bs-dismiss="modal"
-                                    onClick={()=>saveEdit(index)}
+                                    onClick={()=>saveEdit(edId)}
                                   >
                                     Save changes
                                   </button>
